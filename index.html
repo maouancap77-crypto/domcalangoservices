@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dom Lagartixo — La Famiglia de Dom Kalango</title>
+<meta name="description" content="La Famiglia Lagartixo: modelos, locação de presença e entretenimento leve. Ferrando os outros desde Eva. Negamos tudo, com carimbo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ BASE ============ */
+  :root{
+    --paper:#F4EBDA;
+    --paper2:#FBF4E2;
+    --ink:#1A1409;
+    --red:#D93A1B;
+    --red-d:#A8280F;
+    --green:#5B7F23;
+    --green-d:#3E5A17;
+    --yellow:#F3B41A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:92px}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:"Space Grotesk",sans-serif;font-size:1.02rem;line-height:1.55;
+    overflow-x:hidden;padding-bottom:64px;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* grão de papel sobre tudo */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:250;pointer-events:none;opacity:.055;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection{background:var(--red);color:var(--paper)}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--red);outline-offset:3px}
+  .container{width:min(1180px,92%);margin-inline:auto}
+  .section{padding:clamp(3.8rem,8vw,6.5rem) 0}
+  .section--ink{background:var(--ink);color:var(--paper)}
+
+  /* ============ TIPOGRAFIA ============ */
+  h1,h2,.anton{font-family:"Anton",sans-serif;font-weight:400;text-transform:uppercase}
+  .marker{font-family:"Permanent Marker",cursive}
+  .shead{display:flex;flex-direction:column;gap:1rem;margin-bottom:2.6rem}
+  .shead h2{font-size:clamp(2.2rem,5vw,3.7rem);line-height:.95}
+  .kicker{
+    display:inline-flex;align-items:center;gap:.55rem;width:max-content;
+    font-weight:700;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+    border:2.5px solid var(--ink);padding:.35rem .8rem;background:var(--yellow);
+    box-shadow:4px 4px 0 var(--ink);transform:rotate(-1.2deg);
+  }
+  .kicker--red{background:var(--red);color:var(--paper)}
+  .kicker--green{background:var(--green);color:var(--paper)}
+
+  /* ============ BOTÕES / CHIPS ============ */
+  .btn{
+    display:inline-block;background:var(--red);color:var(--paper);
+    font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:.85rem;
+    text-transform:uppercase;letter-spacing:.05em;text-decoration:none;
+    border:3px solid var(--ink);padding:.85rem 1.3rem;box-shadow:6px 6px 0 var(--ink);
+    transition:transform .12s,box-shadow .12s;cursor:pointer;
+  }
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+  .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+  .btn-ghost{background:var(--paper2);color:var(--ink)}
+  .btn-yellow{background:var(--yellow);color:var(--ink);box-shadow:6px 6px 0 var(--paper)}
+  .btn-yellow:hover{box-shadow:8px 8px 0 var(--paper)}
+  .btn-sm{padding:.55rem .9rem;font-size:.78rem;box-shadow:4px 4px 0 var(--ink)}
+  .chip{
+    font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    border:2.5px solid var(--ink);padding:.42rem .7rem;background:var(--paper);
+    box-shadow:3px 3px 0 var(--ink);width:max-content;
+  }
+  .chips{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
+  .chips .chip:nth-child(1){transform:rotate(-1.5deg)}
+  .chips .chip:nth-child(2){transform:rotate(1deg);background:var(--yellow)}
+  .chips .chip:nth-child(3){transform:rotate(-.8deg)}
+
+  /* ============ MARQUEE ============ */
+  .marquee{overflow:hidden;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);background:var(--ink);color:var(--paper)}
+  .marquee--red{background:var(--red)}
+  .mq-track{display:flex;width:max-content;animation:mq 32s linear infinite}
+  .mq-group{display:flex;align-items:center}
+  .mq-group span{
+    padding:.6rem 1.1rem;font-weight:700;font-size:.78rem;letter-spacing:.09em;
+    text-transform:uppercase;white-space:nowrap;
+  }
+  @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ============ TOPO ============ */
+  .topbar{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:3px solid var(--ink);transition:box-shadow .2s}
+  .topbar.scrolled{box-shadow:0 5px 0 rgba(26,20,9,.18)}
+  .bar-in{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;padding:.7rem 0}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+  .brand-mark{width:46px;display:block;flex:none}
+  .brand-mark svg{width:46px;display:block}
+  .brand-txt{font-family:"Anton",sans-serif;font-size:1.22rem;line-height:.85;display:flex;flex-direction:column}
+  .brand-txt small{font-family:"Space Grotesk",sans-serif;font-size:.52rem;letter-spacing:.18em;font-weight:700}
+  .nav{display:flex;gap:1.3rem}
+  .nav a{font-weight:700;font-size:.83rem;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;position:relative;padding:.35rem 0}
+  .nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:3px;background:var(--red);transition:right .18s}
+  .nav a:hover::after{right:0}
+
+  /* ============ HERO ============ */
+  .hero{padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(3rem,7vw,5rem)}
+  .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  .hero h1{font-size:clamp(3.9rem,12.5vw,9.6rem);line-height:.88;letter-spacing:.01em}
+  .hero h1 .row2{display:block;color:transparent;-webkit-text-stroke:3px var(--ink);margin-left:.06em}
+  .tagline{
+    font-family:"Permanent Marker",cursive;font-size:clamp(1.02rem,2.4vw,1.5rem);
+    background:var(--yellow);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);
+    display:inline-block;padding:.4rem .9rem;transform:rotate(-2deg);margin:1.4rem 0 1.1rem;
+  }
+  .hero .lead{max-width:34rem;font-size:1.08rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.8rem}
+  .scroll-hint{margin-top:1.1rem;font-size:.85rem;opacity:.75}
+
+  /* retrato do Don */
+  .billboard{position:relative;transform:rotate(1.6deg);margin-top:1rem}
+  .bb-frame{
+    position:relative;background:var(--paper2);border:4px solid var(--ink);
+    box-shadow:10px 10px 0 var(--ink);padding:1.2rem 1.2rem 1.4rem;
+    background-image:repeating-linear-gradient(0deg,rgba(26,20,9,.045) 0 3px,transparent 3px 10px);
+  }
+  .bb-rent{
+    position:absolute;top:-14px;right:-14px;background:var(--red);color:var(--paper);
+    font-family:"Anton",sans-serif;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;
+    border:3px solid var(--ink);padding:.35rem .7rem;transform:rotate(4deg);
+    box-shadow:4px 4px 0 var(--ink);display:flex;flex-direction:column;align-items:center;line-height:1.15;
+  }
+  .bb-rent small{font-family:"Space Grotesk",sans-serif;font-size:.55rem;letter-spacing:.05em}
+  .bb-line1{font-family:"Anton",sans-serif;text-transform:uppercase;text-align:center;font-size:1.35rem;letter-spacing:.02em}
+  .bb-gecko{width:min(250px,68%);margin:.4rem auto .2rem}
+  .bb-gecko svg{width:100%;display:block;animation:pushup 3.2s ease-in-out infinite;transform-origin:50% 90%}
+  @keyframes pushup{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(6px) rotate(2.5deg)}}
+  .billboard:hover .bb-gecko svg{animation-duration:.5s}
+  .bb-line2{font-family:"Permanent Marker",cursive;font-size:.95rem;text-align:center;color:var(--red-d)}
+  .bb-caption{margin-top:.9rem;font-size:.78rem;text-align:center;opacity:.7}
+  .bb-posts span{position:absolute;bottom:-96px;width:12px;height:100px;background:var(--ink)}
+  .bb-posts span:first-child{left:22%}
+  .bb-posts span:last-child{right:22%}
+
+  /* fumaça do charuto */
+  .smoke path{fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;opacity:0}
+  .don .smoke path{animation:puff 2.6s ease-out infinite}
+  .smoke path:nth-child(2){animation-delay:1.3s}
+  @keyframes puff{0%{opacity:.5;transform:translateY(2px)}100%{opacity:0;transform:translateY(-9px)}}
+
+  /* ============ FAMÍLIA ============ */
+  .sobre-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(2rem,5vw,3.5rem);align-items:start}
+  .sobre-txt p{margin-bottom:1.15rem;max-width:56ch}
+  .sobre-txt strong{background:var(--yellow);padding:0 .25em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .pullcard{
+    background:var(--paper2);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink);
+    padding:1.6rem 1.5rem;transform:rotate(1.4deg);
+  }
+  .pullcard .pull{font-family:"Permanent Marker",cursive;font-size:clamp(1.25rem,2.6vw,1.7rem);color:var(--red);line-height:1.3}
+  .pullcard cite{display:block;margin-top:1rem;font-style:normal;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.75}
+  .priv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.8rem}
+  .pcard{
+    background:var(--paper2);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink);
+    padding:1.4rem 1.3rem;transition:transform .15s;
+  }
+  .pcard:nth-child(1){transform:rotate(-.8deg)}
+  .pcard:nth-child(2){transform:rotate(.7deg)}
+  .pcard:nth-child(3){transform:rotate(-.5deg)}
+  .pcard:hover{transform:rotate(0) translateY(-4px)}
+  .pcard .ic{width:34px;height:34px;color:var(--red);margin-bottom:.9rem}
+  .pcard h3{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:1.15rem;margin-bottom:.5rem;letter-spacing:.02em}
+  .pcard p{font-size:.95rem}
+
+  /* ============ SERVIÇOS ============ */
+  .svc-list{border-bottom:3px solid var(--ink)}
+  .svc{
+    display:grid;grid-template-columns:4.6rem 1fr auto auto;gap:1.2rem;align-items:center;
+    border-top:3px solid var(--ink);padding:1.35rem 1rem;transition:background .15s,color .15s;
+  }
+  .svc-num{font-family:"Anton",sans-serif;font-size:1.9rem;color:var(--red);line-height:1}
+  .svc h3{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:1.25rem;margin-bottom:.2rem;letter-spacing:.02em}
+  .svc p{font-size:.93rem;max-width:62ch}
+  .svc-ic{width:32px;height:32px;color:var(--green-d)}
+  .svc .arr{width:28px;height:28px;transition:transform .2s;color:currentColor}
+  .svc:hover{background:var(--ink);color:var(--paper)}
+  .svc:hover .svc-num{color:var(--red)}
+  .svc:hover .svc-ic{color:var(--yellow)}
+  .svc:hover .arr{transform:rotate(45deg) scale(1.15)}
+  .svc-note{margin-top:1.4rem;font-size:.88rem;max-width:64ch}
+  .svc-note b{background:var(--yellow);padding:0 .25em}
+
+  /* ============ ELENCO ============ */
+  .talents{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:1.5rem}
+  .tcard{background:var(--paper2);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);display:flex;flex-direction:column;transition:transform .18s}
+  .tcard:nth-child(odd){transform:rotate(-1deg)}
+  .tcard:nth-child(even){transform:rotate(.9deg)}
+  .tcard:hover{transform:rotate(0) translateY(-5px)}
+  .photo{position:relative;border-bottom:3px solid var(--ink);background:var(--green);overflow:hidden}
+  .tcard:nth-child(2n) .photo{background:var(--red)}
+  .photo img{
+    width:100%;aspect-ratio:4/5;object-fit:cover;
+    filter:grayscale(1) contrast(1.15) brightness(1.02);mix-blend-mode:multiply;
+  }
+  .photo::after{
+    content:"";position:absolute;inset:0;opacity:.22;pointer-events:none;
+    background-image:radial-gradient(var(--ink) 1px,transparent 1.2px);
+    background-size:8px 8px;
+  }
+  .tbadge{
+    position:absolute;top:12px;left:-10px;background:var(--yellow);border:2.5px solid var(--ink);
+    font-family:"Anton",sans-serif;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+    padding:.3rem .6rem;transform:rotate(-4deg);box-shadow:3px 3px 0 var(--ink);white-space:nowrap;
+  }
+  .tbody{padding:1.05rem 1.1rem 1.2rem;flex:1}
+  .plate{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:1.15rem;margin-bottom:.35rem;letter-spacing:.02em}
+  .tbody p{font-size:.9rem}
+  .tmed{
+    margin-top:auto;padding-top:.8rem;font-size:.72rem;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;border-top:2px dashed var(--ink);opacity:.8;
+  }
+  .tcta{
+    border:3px dashed var(--ink);background:transparent;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:.7rem;padding:2rem;text-align:center;text-decoration:none;
+  }
+  .tcta .big{font-family:"Anton",sans-serif;font-size:1.5rem;text-transform:uppercase}
+  .tcta:hover{background:var(--yellow)}
+  .elenco-intro{max-width:60ch;margin-bottom:2rem}
+
+  /* ============ MÁQUINA DE PIADAS ============ */
+  .machine{
+    max-width:860px;margin:0 auto;background:var(--ink);color:var(--paper);
+    border:3px solid var(--ink);box-shadow:10px 10px 0 var(--red);padding:2.2rem clamp(1.2rem,4vw,2.4rem);
+  }
+  .mach-title{font-family:"Anton",sans-serif;text-align:center;letter-spacing:.2em;font-size:.95rem;text-transform:uppercase;color:var(--yellow);margin-bottom:1.4rem}
+  .joke{
+    font-family:"Permanent Marker",cursive;font-size:clamp(1.25rem,3vw,1.9rem);
+    text-align:center;min-height:5.4em;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;
+    line-height:1.35;
+  }
+  .joke.slam{animation:slam .45s cubic-bezier(.2,1.4,.4,1)}
+  @keyframes slam{0%{transform:scale(1.14) rotate(var(--r,0deg));opacity:.3}100%{transform:none;opacity:1}}
+  .cens-chip{
+    font-family:"Space Grotesk",sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.14em;
+    background:var(--yellow);color:var(--ink);border:2px solid var(--paper);padding:.3rem .7rem;
+    transform:rotate(-2deg);text-transform:uppercase;
+  }
+  .tape{
+    background:var(--red);color:var(--paper);padding:.08em .4em;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  }
+  .mach-foot{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;margin-top:1.8rem;border-top:2px dashed var(--paper);padding-top:1.5rem}
+  .mach-count{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow)}
+  .mach-intro{max-width:64ch;margin-bottom:2.2rem}
+
+  /* ============ COMUNICADO / TERMO (documentos) ============ */
+  .doc,.letter{
+    position:relative;background:var(--paper2);color:var(--ink);border:3px solid var(--ink);
+    box-shadow:9px 9px 0 var(--ink);max-width:900px;margin:0 auto;
+    padding:clamp(1.6rem,4vw,2.8rem);
+  }
+  .letter{box-shadow:10px 10px 0 var(--red);transform:rotate(-.6deg)}
+  .doc::before,.letter::before{content:"";position:absolute;inset:9px;border:2px dashed var(--ink);opacity:.45;pointer-events:none}
+  .letterhead{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(1.3rem,3vw,1.8rem);text-align:center}
+  .letter-sub{text-align:center;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:.3rem 0 1.1rem;opacity:.8}
+  .lrule{border:none;border-top:3px solid var(--ink);margin:0 0 1.3rem}
+  .letter p.body{margin-bottom:1.2rem}
+  .deny{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding:.9rem 0;border-top:2px dashed var(--ink);align-items:start}
+  .deny-chip{
+    font-family:"Anton",sans-serif;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;
+    border:2.5px solid var(--ink);padding:.32rem .6rem;background:var(--red);color:var(--paper);
+    transform:rotate(-2deg);box-shadow:3px 3px 0 var(--ink);height:max-content;white-space:nowrap;
+  }
+  .deny-chip--y{background:var(--yellow);color:var(--ink)}
+  .deny-chip--g{background:var(--green);color:var(--paper)}
+  .signature{font-family:"Permanent Marker",cursive;font-size:1.9rem;display:inline-block;transform:rotate(-3deg);margin-top:1.4rem;color:var(--red-d)}
+  .sig-role{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem}
+  .ps{font-size:.88rem;margin-top:1.4rem;padding-top:1rem;border-top:2px dashed var(--ink);opacity:.85}
+  .doc-head{font-family:"Anton",sans;text-transform:uppercase;font-size:clamp(1.1rem,2.6vw,1.6rem);text-align:center;margin-bottom:.5rem}
+  .doc-sub{text-align:center;font-size:.85rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.8rem;opacity:.8}
+  .clauses{list-style:none}
+  .clauses li{display:grid;grid-template-columns:3rem 1fr;gap:1rem;padding:.9rem 0;border-top:2px dashed var(--ink);align-items:start}
+  .clauses .rn{font-family:"Anton",sans;font-size:1.3rem;color:var(--red)}
+  .doc-small{margin-top:1.4rem;text-align:center;font-size:.78rem;opacity:.75}
+  .stamp{
+    position:absolute;right:-26px;top:-34px;width:150px;transform:rotate(-13deg);
+    mix-blend-mode:multiply;opacity:.9;pointer-events:none;
+  }
+  .stamp--flip{right:auto;left:-26px;transform:rotate(12deg)}
+  .stamptxt{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:16.5px;letter-spacing:2.5px;fill:var(--red)}
+  .stampc{font-family:"Anton",sans-serif;font-size:26px;fill:var(--red);letter-spacing:2px}
+
+  /* ============ FAQ ============ */
+  .faq-wrap{max-width:860px;margin:0 auto}
+  details{border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);margin-bottom:1.1rem;background:var(--paper2)}
+  summary{list-style:none;cursor:pointer;padding:1.05rem 1.2rem;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:background .15s,color .15s}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:"Anton",sans-serif;font-size:1.5rem;line-height:1}
+  details[open] summary{background:var(--ink);color:var(--paper)}
+  details[open] summary::after{content:"–";color:var(--yellow)}
+  details .a{padding:.2rem 1.2rem 1.2rem;font-size:.96rem;max-width:66ch}
+  details .a b{background:var(--yellow);padding:0 .2em}
+
+  /* ============ CONTATO ============ */
+  .cont-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+  .cont-info li{list-style:none;margin-bottom:1.2rem;padding-left:1.4rem;position:relative;font-size:.98rem}
+  .cont-info li::before{content:"";position:absolute;left:0;top:.42em;width:9px;height:9px;background:var(--red);border:2px solid var(--ink)}
+  .cont-info b{display:block;text-transform:uppercase;font-size:.78rem;letter-spacing:.08em;margin-bottom:.15rem}
+  .formcard{background:var(--paper2);border:3px solid var(--ink);box-shadow:9px 9px 0 var(--ink);padding:clamp(1.4rem,3.5vw,2.2rem)}
+  .field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.1rem}
+  .field label{font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em}
+  input,select,textarea{
+    font:inherit;color:var(--ink);background:var(--paper2);border:3px solid var(--ink);
+    padding:.7rem .8rem;box-shadow:4px 4px 0 var(--ink);width:100%;
+  }
+  input:focus,select:focus,textarea:focus{outline:none;box-shadow:4px 4px 0 var(--red)}
+  select{
+    appearance:none;cursor:pointer;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%231A1409' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right .8rem center;
+  }
+  textarea{resize:vertical;min-height:110px}
+  .form-small{margin-top:.9rem;font-size:.78rem;opacity:.75}
+
+  /* ============ FOOTER ============ */
+  .footer{background:var(--ink);color:var(--paper);border-top:3px solid var(--ink);padding:3.5rem 0 2rem}
+  .fword{
+    font-family:"Anton",sans-serif;text-align:center;text-transform:uppercase;
+    font-size:clamp(2.6rem,10vw,8.5rem);line-height:.88;
+    color:transparent;-webkit-text-stroke:2.5px var(--paper);opacity:.85;user-select:none;
+    padding:1rem 0 3rem;
+  }
+  .fcols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:2rem;padding-bottom:2.5rem}
+  .fcols h4{font-family:"Anton",sans;text-transform:uppercase;font-size:.85rem;letter-spacing:.12em;color:var(--yellow);margin-bottom:.8rem}
+  .fcols p,.fcols li{font-size:.88rem;list-style:none;opacity:.85}
+  .fcols a{text-decoration:none;opacity:.85;line-height:1.9}
+  .fcols a:hover{color:var(--yellow);opacity:1;text-decoration:underline}
+  .flegal{border-top:2px dashed var(--paper);padding-top:1.2rem;font-size:.78rem;opacity:.75;text-align:center}
+
+  /* ============ LAGARTIXO ANDARILHO ============ */
+  .strip{
+    position:fixed;left:0;right:0;bottom:0;height:46px;z-index:40;
+    background:var(--paper);border-top:3px solid var(--ink);
+  }
+  .strip::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:10px;opacity:.45;
+    background:repeating-linear-gradient(90deg,transparent 0 38px,var(--ink) 38px 40px);
+  }
+  .walker{position:absolute;left:0;bottom:5px;will-change:transform}
+  .wsvg{display:block;width:76px}
+  .wsvg svg{width:76px;display:block}
+  .wsvg.flip svg{transform:scaleX(-1)}
+  .wbadge{
+    position:absolute;bottom:100%;left:50%;margin-bottom:3px;transform:translateX(-50%) rotate(-3deg);
+    background:var(--yellow);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);
+    font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:.22rem .5rem;white-space:nowrap;
+  }
+  .leg{transform-box:fill-box;transform-origin:50% 8%}
+  .walker.walking .leg{animation:step .32s ease-in-out infinite alternate}
+  .walker.walking .leg.la{animation-delay:0s}
+  .walker.walking .leg.lb{animation-delay:.12s}
+  .walker.walking .leg.lc{animation-delay:.06s}
+  .walker.walking .leg.ld{animation-delay:.18s}
+  @keyframes step{from{transform:rotate(16deg)}to{transform:rotate(-16deg)}}
+
+  /* ============ TOAST / REVEAL ============ */
+  .toast{
+    position:fixed;left:50%;bottom:60px;transform:translate(-50%,20px);opacity:0;z-index:300;
+    pointer-events:none;transition:.35s cubic-bezier(.2,.9,.3,1);
+    background:var(--paper);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);
+    padding:.9rem 1.2rem;font-weight:500;max-width:min(90vw,520px);text-align:center;
+  }
+  .toast.show{transform:translate(-50%,0);opacity:1}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ============ RESPONSIVO ============ */
+  @media (max-width:920px){
+    .hero-grid,.sobre-grid,.cont-grid{grid-template-columns:1fr}
+    .billboard{max-width:440px;margin-inline:auto}
+    .bb-posts span{bottom:-64px;height:70px}
+    .fcols{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:820px){.nav{display:none}}
+  @media (max-width:700px){
+    .svc{grid-template-columns:3.1rem 1fr auto;gap:.8rem}
+    .svc-ic{display:none}
+    .stamp,.stamp--flip{width:110px;right:-14px;left:auto;top:-22px}
+  }
+  @media (max-width:560px){
+    .wbadge{display:none}
+    .chips .chip{font-size:.62rem}
+    .fcols{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+    .mq-track{animation:none;transform:none}
+    .reveal{opacity:1!important;transform:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOPO ============ -->
+<header class="topbar" id="topbar">
+  <div class="container bar-in">
+    <a class="brand" href="#inicio" aria-label="La Famiglia Lagartixo — voltar ao início">
+      <span class="brand-mark" data-gecko></span>
+      <span class="brand-txt">FAMÍLIA LAGARTIXO<small>MODELOS &bull; ENTRETENIMENTO LEVE &bull; DOM KALANGO</small></span>
+    </a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#familia">Família</a>
+      <a href="#comunicado">Comunicado</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#piadas">Piadas</a>
+      <a href="#sigilo">Sigilo</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-sm" href="#contato">Fale baixinho</a>
+  </div>
+</header>
+
+<!-- letreiro de estrada -->
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track">
+    <div class="mq-group">
+      <span>◆ Ferrando os outros desde Eva</span><span>◆ La Famiglia Lagartixo — Dom Kalango</span>
+      <span>◆ Negamos tudo (com carimbo)</span><span>◆ A serpente é da advocacia da Família</span>
+      <span>◆ Entretenimento leve por excelência</span><span>◆ Ninguém viu nada</span>
+    </div>
+    <div class="mq-group">
+      <span>◆ Ferrando os outros desde Eva</span><span>◆ La Famiglia Lagartixo — Dom Kalango</span>
+      <span>◆ Negamos tudo (com carimbo)</span><span>◆ A serpente é da advocacia da Família</span>
+      <span>◆ Entretenimento leve por excelência</span><span>◆ Ninguém viu nada</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero container" id="inicio">
+  <div class="hero-grid">
+    <div>
+      <p class="kicker kicker--red">Est. desde Eva &bull; Dom Kalango &bull; denuncie: a Família agradece (com chá)</p>
+      <h1>LAGAR<span class="row2">TIXO</span></h1>
+      <p class="tagline">— ferrando os outros desde Eva. (Oficialmente: desde ontem.)</p>
+      <p class="lead">
+        Modelos, locação de presença e entretenimento leve — as palavras bonitas que a Família
+        imprime no cartão. O que a Família pratica, a advogada nega por escrito, com carimbo.
+        Pra você fica o melhor produto da casa: sigilo. Ninguém pergunta, ninguém responde,
+        todo mundo sai leve.
+      </p>
+      <div class="chips">
+        <span class="chip">Sigilo de omertà</span>
+        <span class="chip">Negamos tudo (com carimbo)</span>
+        <span class="chip">Zero denúncias* (*ninguém sobrou pra contar)</span>
+      </div>
+      <div class="cta-row">
+        <a href="#contato" class="btn">Entre para a Família</a>
+        <a href="#comunicado" class="btn btn-ghost">Só olhando (não conte a ninguém)</a>
+      </div>
+      <p class="scroll-hint">(role com discrição — o Don te acompanha lá embaixo, de chapéu)</p>
+    </div>
+
+    <!-- retrato oficial -->
+    <div class="billboard reveal">
+      <div class="bb-frame">
+        <span class="bb-rent">O Don recebe<small>das 9h às 9h15</small></span>
+        <p class="bb-line1">Retrato oficial<br>do Don</p>
+        <div class="bb-gecko" data-gecko-don></div>
+        <p class="bb-line2">Oficialmente: modelo de conduta. Não-oficialmente... também. Pergunta baixinho.</p>
+      </div>
+      <div class="bb-posts" aria-hidden="true"><span></span><span></span></div>
+      <p class="bb-caption">*Pintado por encomenda. O pintor viu só o lado bom — foi orientado a ver só o lado bom.</p>
+    </div>
+  </div>
+</section>
+
+<main>
+<!-- ============ A FAMÍLIA ============ -->
+<section class="section container" id="familia">
+  <div class="shead reveal">
+    <span class="kicker">Nº 01 — Quem somos (pergunte baixinho)</span>
+    <h2>A Família que o Éden rejeitou</h2>
+  </div>
+  <div class="sobre-grid">
+    <div class="sobre-txt reveal">
+      <p>
+        Tudo começou no Éden, com o primeiro favor da História: a serpente ofereceu a maçã,
+        a Eva pagou o preço e o Lagartixo — à época um lagarto de respeito — anotou a lição
+        que rege a Família até hoje: <strong>nunca seja o que entrega.</strong> Hoje a serpente
+        é nossa advogada. Ela nunca perdeu um caso que ela mesma não tivesse começado.
+      </p>
+      <p>
+        De lá pra cá mudamos pra Dom Kalango, vestimos o terno, engomamos a gola e seguimos no
+        mesmo ramo: modelos, presença e entretenimento leve. E um “ramo paralelo” que não
+        existe, nunca existiu e — se existisse — seria totalmente legal em qualquer cidade
+        que não soubesse ler.
+      </p>
+      <p>
+        Antes que a sua imaginação comece: a Família não agencia, não intermedeia e não
+        encontra no dicionário a palavra que você está pensando. <strong>A serpente arrancou a
+        página.</strong> Foi segurança — sua, dela e do dicionário.
+      </p>
+    </div>
+    <aside class="pullcard reveal" style="--d:.1s">
+      <p class="pull">“Oficialmente, uma agência de modelos. Não-oficialmente... também.”</p>
+      <cite>— Dom Lagartixo, ao microfone do boteco, segundos antes do corte de energia</cite>
+    </aside>
+  </div>
+  <div class="priv-grid">
+    <div class="pcard reveal">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+      <h3>Sigilo de omertà</h3>
+      <p>O que a Família sabe, ela não conta. O que a Família não sabe, ela pergunta baixinho. E ninguém escuta a mesma pergunta duas vezes.</p>
+    </div>
+    <div class="pcard reveal" style="--d:.12s">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.5-3.2 8-7.5 9.5-4.3-1.5-7.5-5-7.5-9.5V6z"/></svg>
+      <h3>Seus dados não saem daqui</h3>
+      <p>Nem com intimação. A serpente “perde” o processo — sempre por acidente, sempre com café, sempre com muito pesar.</p>
+    </div>
+    <div class="pcard reveal" style="--d:.24s">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2.7-4.5 6-6.8 9-6.8s6.3 2.3 9 6.8c-2.7 4.5-6 6.8-9 6.8s-6.3-2.3-9-6.8z"/><circle cx="12" cy="12" r="2.8"/><path d="M4 20L20 4"/></svg>
+      <h3>Aparição sob encomenda</h3>
+      <p>Você escolhe quando aparecer; a Família escolhe quando esquecer que viu. Proteção de testemunha artesanal, caseira, com selo de qualidade da própria Família (que se avaliou: nota máxima).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMUNICADO OFICIAL ============ -->
+<section class="section section--ink" id="comunicado">
+  <div class="container">
+    <div class="shead reveal">
+      <span class="kicker">Nº 02 — Nota oficial de esclarecimento</span>
+      <h2>Negamos tudo (com carimbo)</h2>
+      <p style="max-width:64ch;opacity:.9">
+        Em atenção às calúnias da serpente concorrente, da imprensa do boteco e da sua própria
+        imaginação, a Família publica, em caráter definitivo, o comunicado abaixo. Foi lido em
+        voz alta no cartório. O cartório negou.
+      </p>
+    </div>
+    <div class="letter reveal">
+      <svg class="stamp stamp--flip" viewBox="0 0 220 220" aria-hidden="true">
+        <defs><path id="stc1" d="M110,110 m -76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
+        <circle cx="110" cy="110" r="102" fill="none" stroke="var(--red)" stroke-width="6"/>
+        <circle cx="110" cy="110" r="58" fill="none" stroke="var(--red)" stroke-width="3"/>
+        <text class="stamptxt"><textPath href="#stc1">★ FAMÍLIA LAGARTIXO ★ DOM KALANGO</textPath></text>
+        <text x="110" y="103" text-anchor="middle" class="stampc">NEGAMOS</text>
+        <text x="110" y="130" text-anchor="middle" class="stampc">TUDO</text>
+      </svg>
+      <p class="letterhead">Comunicado Oficial nº 000</p>
+      <p class="letter-sub">La Famiglia Lagartixo — Dom Kalango, o interior de todos os interiores</p>
+      <hr class="lrule">
+      <p class="body">A quem possa interessar — e principalmente a quem NÃO devia estar interessado, mas está:</p>
+      <div class="deny"><span class="deny-chip">Negamos</span>
+        <p>que agenciamos “garotas da vida”. Toda garota tem uma vida; isso não é serviço, é filosofia. A outra palavra não consta no dicionário da Família — a serpente arrancou a página. Por segurança.</p></div>
+      <div class="deny"><span class="deny-chip deny-chip--y">Não existe</span>
+        <p>“programa”. Existem pacotes de fidelidade: aniversário, casamento, gala. Se você ligou pensando noutra coisa, a linha caiu sozinha. Ela faz isso. Teimosinha, essa linha.</p></div>
+      <div class="deny"><span class="deny-chip deny-chip--g">É leve</span>
+        <p>o nosso entretenimento. Leve é o que cabe no bolso da camisa e não pesa na consciência. Testado na balança do fórum. O fórum não comentou nada desde então.</p></div>
+      <div class="deny"><span class="deny-chip">Calúnia</span>
+        <p>que o Don é proxeneta. O Don é empresário. Proxeneta ganha cadeia; empresário ganha cartão. O Don tem cartão. E a chave da cidade — ninguém lembra de ter dado. Ele pegou.</p></div>
+      <div class="deny"><span class="deny-chip deny-chip--y">Convite</span>
+        <p>para quem insistir na versão errada: um chá na sede, às 3h da manhã. Com bolo. A Família não faz nada às 3h da manhã além de chá. Confia.</p></div>
+      <span class="signature">Dom Lagartixo</span>
+      <p class="sig-role">No interesse de quem interessa</p>
+      <p class="ps">P.S.: Este comunicado foi lido em voz alta no cartório. O cartório negou ter ouvido. O escrivão pediu transferência — a Família pagou a passagem. Gentileza.</p>
+    </div>
+  </div>
+</section>
+
+<!-- letreiro vermelho -->
+<div class="marquee marquee--red" aria-hidden="true">
+  <div class="mq-track">
+    <div class="mq-group">
+      <span>◆ Book</span><span>◆ Casting</span><span>◆ Locação de presença</span>
+      <span>◆ Entretenimento leve</span><span>◆ Seguro de passarela</span>
+      <span>◆ Favores (retribuição amistosa)</span><span>◆ Modo Discrição</span>
+    </div>
+    <div class="mq-group">
+      <span>◆ Book</span><span>◆ Casting</span><span>◆ Locação de presença</span>
+      <span>◆ Entretenimento leve</span><span>◆ Seguro de passarela</span>
+      <span>◆ Favores (retribuição amistosa)</span><span>◆ Modo Discrição</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SERVIÇOS ============ -->
+<section class="section container" id="servicos">
+  <div class="shead reveal">
+    <span class="kicker kicker--green">Nº 03 — O que a Família faz (de bom)</span>
+    <h2>Tudo tem nota fiscal</h2>
+  </div>
+  <div class="svc-list">
+    <div class="svc reveal">
+      <span class="svc-num">01</span>
+      <div><h3>Agenciamento de modelos (o ramo oficial)</h3><p>Book, passarela, campanha, editorial. Existe de verdade, tem foto, tem testemunha. A testemunha viajou. Comprometida. Volta depois. Talvez.</p></div>
+      <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l2.6 6 6.4.5-4.9 4.2 1.5 6.3L12 16l-5.6 3.5 1.5-6.3L3 9l6.4-.5z"/></svg>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-num">02</span>
+      <div><h3>Locação de presença</h3><p>Evento precisa de gente bonita ao redor do bolo. A Família loca presença: pessoas elegantes, risos na hora certa e nenhuma pergunta sobre o anfitrião. Velório alegre sai no mesmo pacote — cortesia, não serviço.</p></div>
+      <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="13" r="3.8"/><circle cx="17.5" cy="13" r="3.8"/><path d="M10.3 13c.6-1.2 2.8-1.2 3.4 0M2.7 11.5L1.5 8M21.3 11.5l1.2-3.5"/></svg>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-num">03</span>
+      <div><h3>Entretenimento leve</h3><p>A definição de “leve” varia de município pra município. Em Dom Kalango, leve é o que o escrivão não sabe escrever — e o escrivão escrevia muito bem, na época.</p></div>
+      <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3.5"/><path d="M5 3.5L7.5 6M19 3.5L16.5 6M12 13v4M8 21h8M9 17.5h6"/></svg>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-num">04</span>
+      <div><h3>Seguro de passarela</h3><p>Proteção contra fofoca: ninguém comenta da sua cara, do seu passe, do seu negócio. Ninguém. Nunca. Mensalidade em dia, sorriso em dia.</p></div>
+      <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.5-3.2 8-7.5 9.5-4.3-1.5-7.5-5-7.5-9.5V6z"/></svg>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-num">05</span>
+      <div><h3>Consultoria de favores</h3><p>A Família faz pequenos favores e esquece na hora. Depois lembra, na hora exata em que paciência é o que você menos tem. A retribuição é amizade. Amizade com juros.</p></div>
+      <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.8"/><circle cx="6" cy="17" r="2.8"/><path d="M8.4 8.6L20 17M8.4 15.4L20 7"/></svg>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-num">06</span>
+      <div><h3>Modo Discrição</h3><p>Para clientes com nome a zelar e agenda a apagar. Atendimento sem rosto, sem recibo e — graças ao café derramado no arquivo — sem prova. Se você não lembra de ter lido isto, funcionou.</p></div>
+      <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2.7-4.5 6-6.8 9-6.8s6.3 2.3 9 6.8c-2.7 4.5-6 6.8-9 6.8s-6.3-2.3-9-6.8z"/><circle cx="12" cy="12" r="2.8"/><path d="M4 20L20 4"/></svg>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+    </div>
+  </div>
+  <p class="svc-note reveal">Tudo acima tem nota fiscal, testemunha e advogada. O que não tem nota fiscal não está na lista — está “em outro lugar”, e <b>“outro lugar” não é endereço, é figura de estilo.</b> Pergunte pro escrivão. Se você encontrar o escrivão.</p>
+</section>
+
+<!-- ============ ELENCO ============ -->
+<section class="section container" id="elenco">
+  <div class="shead reveal">
+    <span class="kicker">Nº 04 — Elenco</span>
+    <h2>As caras da Família</h2>
+  </div>
+  <p class="elenco-intro reveal">Oficialmente, modelos. Não-oficialmente... também. Reparem no padrão da casa.</p>
+  <div class="talents">
+    <article class="tcard reveal">
+      <div class="photo">
+        <span class="tbadge">Na Família desde 2016</span>
+        <img src="https://picsum.photos/seed/lagartixo-val/600/750.jpg" alt="Valdirene A Cobra Solar fingindo não ver o fotógrafo">
+      </div>
+      <div class="tbody">
+        <h3 class="plate">Valdirene “A Cobra” Solar</h3>
+        <p>1,78 de pura autoestima. Especialidade: o olhar de quem sabe o seu CPF, o do seu sócio e o do sócio do sócio. Não é ameaça — é dedicação.</p>
+        <p class="tmed">Medidas: ninguém pergunta duas vezes</p>
+      </div>
+    </article>
+    <article class="tcard reveal" style="--d:.08s">
+      <div class="photo">
+        <span class="tbadge">Na Família desde 2019</span>
+        <img src="https://picsum.photos/seed/lagartixo-jos/600/750.jpg" alt="Josenildo O Simétrico Brilho ensaiando o olhar de campanha">
+      </div>
+      <div class="tbody">
+        <h3 class="plate">Josenildo “O Simétrico” Brilho</h3>
+        <p>Rosto tão simétrico que o INSS pediu pra mensurar. Recebeu visita educativa da Família. O INSS agora manda cartão de aniversário. Feliz, o INSS.</p>
+        <p class="tmed">Medidas: ninguém pergunta duas vezes</p>
+      </div>
+    </article>
+    <article class="tcard reveal" style="--d:.16s">
+      <div class="photo">
+        <span class="tbadge">Na Família desde 2020</span>
+        <img src="https://picsum.photos/seed/lagartixo-mari/600/750.jpg" alt="Marilene Dupla Chave Sentido entre um ensaio e um acerto de contas">
+      </div>
+      <div class="tbody">
+        <h3 class="plate">Marilene “Dupla Chave” Sentido</h3>
+        <p>Ri da piada do cliente duas vezes: uma por educação, outra por ironia. Cobra o dobro por cada. O dobro do quê? Pergunta baixinho.</p>
+        <p class="tmed">Medidas: ninguém pergunta duas vezes</p>
+      </div>
+    </article>
+    <article class="tcard reveal" style="--d:.24s">
+      <div class="photo">
+        <span class="tbadge">Na Família desde 2023</span>
+        <img src="https://picsum.photos/seed/lagartixo-cleide/600/750.jpg" alt="Cleide Coroa Lux segurando a pose e o cetro">
+      </div>
+      <div class="tbody">
+        <h3 class="plate">Cleide “Coroa” Lux</h3>
+        <p>Ex-rainha da quadrilha do SESI. A fama subiu à cabeça; a Família subiu junto, de carona, com o cetro e o trio de forró.</p>
+        <p class="tmed">Medidas: ninguém pergunta duas vezes</p>
+      </div>
+    </article>
+    <a class="tcard tcta reveal" style="--d:.32s" href="#contato">
+      <span class="big">Sua cara aqui</span>
+      <span>A Família aceita rostos novos. Apresente-se por carta manuscrita, sem impressão digital, com duas testemunhas. As testemunhas serão tratadas com bolo.</span>
+      <span class="btn btn-yellow">Quero constar no retrato oficial</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ PIADAS ============ -->
+<section class="section container" id="piadas">
+  <div class="shead reveal">
+    <span class="kicker kicker--red">Nº 05 — Aviso: piadas</span>
+    <h2>Humor negro porte AAA</h2>
+  </div>
+  <p class="mach-intro reveal">
+    Nossa especialidade, depois do omertà, é a piada que não devia. O Don permite, a serpente
+    tria, o carimbo nega. Aperte por sua conta e risco.
+  </p>
+  <div class="machine reveal">
+    <p class="mach-title">O saco de piadas do Don</p>
+    <p class="joke" id="joke" aria-live="polite"></p>
+    <div class="mach-foot">
+      <button class="btn btn-yellow" id="puxar" type="button">Puxa outra (o Don permite)</button>
+      <p class="mach-count">Piada nº <span id="jn">1</span> — as demais estão sob omertà</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TERMO DE OMERTÀ ============ -->
+<section class="section container" id="sigilo">
+  <div class="shead reveal">
+    <span class="kicker kicker--green">Nº 06 — Privacidade</span>
+    <h2>A parte séria (sério mesmo)</h2>
+  </div>
+  <div class="doc reveal">
+    <svg class="stamp" viewBox="0 0 220 220" aria-hidden="true">
+      <defs><path id="stc2" d="M110,110 m -76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
+      <circle cx="110" cy="110" r="102" fill="none" stroke="var(--red)" stroke-width="6"/>
+      <circle cx="110" cy="110" r="58" fill="none" stroke="var(--red)" stroke-width="3"/>
+      <text class="stamptxt"><textPath href="#stc2">★ OMERTÀ ★ LAGARTIXO ★ DOM KALANGO</textPath></text>
+      <text x="110" y="103" text-anchor="middle" class="stampc">NEGAMOS</text>
+      <text x="110" y="130" text-anchor="middle" class="stampc">TUDO</text>
+    </svg>
+    <p class="doc-head">Termo de Omertà nº 000-1 — O Acordo do Silêncio da Família</p>
+    <p class="doc-sub">Vigência: eterna. Renovação automática, como assinatura de academia e dívida de favor.</p>
+    <ol class="clauses">
+      <li><span class="rn">I.</span><p><b>Não vendemos seus dados.</b> Dados da Família não se vendem — se herdam, com respeito e em voz baixa.</p></li>
+      <li><span class="rn">II.</span><p><b>Nada de terceiros.</b> Terceiro que aparece pedindo o Wi-Fi, a gente muda a senha e o assunto.</p></li>
+      <li><span class="rn">III.</span><p><b>O que a Família ouve, a Família arquiva</b> em local que o fórum não encontra — e o fórum já procurou com guia turístico.</p></li>
+      <li><span class="rn">IV.</span><p><b>Deleção a pedido:</b> apagamos tudo, inclusive o pedido, inclusive o estagiário que leu o pedido. Ele volta. Sem a memória. Volta inteiro, tá tudo bem, é a cidade.</p></li>
+      <li><span class="rn">V.</span><p><b>O sigilo desta Família é maior que a sua dívida com ela.</b> E a sua dívida, coitado, já virou história regional.</p></li>
+    </ol>
+    <p class="doc-small">*Documento fictício com efeito real de tranquilidade. Vale mais que assinatura de padaria e menos que assinatura de juiz — por isso a Família mantém distância respeitosa dos juízes. E dos demais.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section container" id="faq">
+  <div class="shead reveal">
+    <span class="kicker">Nº 07 — FAQ</span>
+    <h2>Perguntas frequentes e inconvenientes</h2>
+  </div>
+  <div class="faq-wrap reveal">
+    <details>
+      <summary>A Família é o que todo mundo diz que é?</summary>
+      <p class="a">Depende do que “todo mundo” diz. Se falaram <b>“agência de modelos e entretenimento leve”</b>: exatamente, obrigado pela propaganda. Se falaram outra coisa: “todo mundo” nunca esteve aqui, não viu nada, e vai negar com vontade na frente de qualquer escrivão.</p>
+    </details>
+    <details>
+      <summary>“Entretenimento leve” é o que eu estou pensando?</summary>
+      <p class="a">Se você está pensando em karaokê, sim. Se está pensando noutra coisa, esse serviço não existe, nunca existiu, e o seu pensamento já está sendo registrado pela advogada. Ela manda um abraço.</p>
+    </details>
+    <details>
+      <summary>Por que a serpente é advogada da Família?</summary>
+      <p class="a">Ela convenceu a primeira cliente da História a aceitar uma fruta proibida numa frase só. Com contrato, ela faz o impossível virar cláusula. E faz a concorrência virar passado.</p>
+    </details>
+    <details>
+      <summary>Vocês vendem “programa”?</summary>
+      <p class="a">Vendemos pacotes de fidelidade: aniversário, casamento, gala. Qualquer outro “programa” não existe, e quem insiste ganha um chá às 3h da manhã. Com bolo. O chá é ótimo — o horário é que assusta.</p>
+    </details>
+    <details>
+      <summary>O Don é perigoso?</summary>
+      <p class="a">O Don é um lagartixo vegetariano, caseiro, que borda “NEGAMOS TUDO” no lençol. O que assusta é a agenda: cheia de “encontros”, “esclarecimentos” e “chas das 3h”. Ninguém sabe se o chá é bom. <b>Ninguém confirmou por escrito.</b></p>
+    </details>
+    <details>
+      <summary>Dom Kalango fica onde?</summary>
+      <p class="a">Fica quieto. E a Família prefere que continue assim — nenhum mapa precisou ser “renegociado” pra isso. Nenhum. Este mês.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="section container" id="contato">
+  <div class="shead reveal">
+    <span class="kicker kicker--red">Nº 08 — Contato</span>
+    <h2>Fale baixinho com a Família</h2>
+  </div>
+  <div class="cont-grid">
+    <div class="reveal">
+      <ul class="cont-info">
+        <li><b>Telefone</b>Desligamos na sua cara, por discrição. Insista e o pombo te localiza. Educadamente.</li>
+        <li><b>Endereço</b>Terceiro beco atrás da igreja. Não pergunte na padaria — a padaria é “protegida” e pergunta demais.</li>
+        <li><b>Horário</b>9h às 9h15. O resto do tempo a Família “trabalha”. Em quê? Eis a pergunta que ninguém repetiu.</li>
+        <li><b>Chá das 3h</b>Só com convite. O convite chega antes de você saber que precisava.</li>
+      </ul>
+    </div>
+    <form class="formcard reveal" id="formContato" style="--d:.1s" novalidate>
+      <div class="field">
+        <label for="f-nome">Nome ou codinome</label>
+        <input id="f-nome" name="nome" type="text" required placeholder="Ex.: Valdirene, A Cobra, Testemunha nº 7">
+      </div>
+      <div class="field">
+        <label for="f-cont">Contato</label>
+        <input id="f-cont" name="contato" type="text" required placeholder="E-mail, recado ou pombo com anilha">
+      </div>
+      <div class="field">
+        <label for="f-mot">Motivo</label>
+        <select id="f-mot" name="motivo" required>
+          <option value="" selected disabled>Escolha com discrição…</option>
+          <option>Quero ser modelo (o ramo oficial)</option>
+          <option>Quero contratar presença / entretenimento leve (o outro ramo oficial)</option>
+          <option>Quero o Modo Discrição (a Família não viu você aqui)</option>
+          <option>Vim pelo chá das 3h (sou corajoso)</option>
+          <option>Vim denunciar (a serpente adora: tem café e formulário)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-msg">Mensagem</label>
+        <textarea id="f-msg" name="mensagem" required placeholder="Escreva baixinho. A Família lê em voz de confissão."></textarea>
+      </div>
+      <button class="btn" type="submit">Enviar em omertà</button>
+      <p class="form-small">*A demora na resposta é discrição de alto padrão. Se o pombo chegar antes do e-mail, o e-mail teve um “acidente”.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="fword" aria-hidden="true">Ferrando<br>os outros<br>desde Eva</div>
+  <div class="container fcols">
+    <div>
+      <h4>La Famiglia Lagartixo LTDA™</h4>
+      <p>Modelos, presença e entretenimento leve de Dom Kalango. O resto é invenção da serpente — que hoje é daqui, processa quem repete, e manda um abraço.</p>
+    </div>
+    <div>
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#familia">A Família</a></li>
+        <li><a href="#comunicado">Comunicado oficial</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#elenco">Elenco</a></li>
+        <li><a href="#piadas">Piadas</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sigilo</h4>
+      <ul>
+        <li><a href="#sigilo">Termo de Omertà nº 000-1</a></li>
+        <li><a href="#comunicado">Negamos tudo (carimbo)</a></li>
+        <li><a href="#faq">Advogada da Família</a></li>
+        <li><a href="#contato">Chá das 3h (mediante convite)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Dom Kalango em números</h4>
+      <ul>
+        <li><p>População: 3.102 (sem contar quem “viajou” de última hora)</p></li>
+        <li><p>Semáforos: 2 — um pifa; o outro “trabalha” pra Família</p></li>
+        <li><p>Agências de modelos: 1 (mundial, e única — por motivos)</p></li>
+        <li><p>Rumores sobre a Família: 14.803 — todos desmentidos com carimbo, bolo e café</p></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container flegal">
+    © <span id="ano">2025</span> Família Lagartixo Entretenimento Leve LTDA™ — CNPJ em fase de omertà —
+    Site de humor e paródia: nenhum serviço real é oferecido, nenhuma garota foi agenciada e nenhum crime
+    foi cometido por lagartixas (a serpente confirma por escrito, em papel que depois come).
+    Seu scroll está sendo seguido por um lagartixo de chapéu — oficialmente, por proteção.
+  </div>
+</footer>
+
+<!-- ============ O DON ANDARILHO ============ -->
+<div class="strip" aria-hidden="true">
+  <div class="walker" id="walker">
+    <span class="wbadge" id="wbadge">Sigilo restante: 100%</span>
+    <span class="wsvg" data-gecko-don></span>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ===== O lagartixo — versão comum e versão Don (chapéu + charuto) ===== */
+function geckoSVG(don){
+  const hat = don
+    ? `<g transform="rotate(-8 106 30)">
+         <ellipse cx="105" cy="31" rx="26" ry="5.5" fill="var(--ink)"/>
+         <path d="M89 31 q0 -19 3 -21 h30 q3 2 3 21 z" fill="var(--ink)"/>
+         <path d="M89 25 h36 v5.5 h-36 z" fill="var(--red)"/>
+       </g>`
+    : "";
+  const boca = don
+    ? `<path d="M127 46 L141 43" stroke="var(--ink)" stroke-width="7" stroke-linecap="round" fill="none"/>
+       <circle cx="141" cy="42.5" r="2.8" fill="var(--red)"/>
+       <g class="smoke"><path d="M142 37 q4 -5 0 -10"/><path d="M145 34 q5 -7 1 -12"/></g>`
+    : `<path d="M125 46 q4 4 2 8" stroke="var(--red)" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  return `<svg viewBox="0 0 150 100" class="${don ? "don" : ""}" aria-hidden="true">
+    <g fill="none" stroke-linecap="round">
+      <path d="M46 44 C 28 42 14 48 13 60 C 12 71 22 77 29 71 C 34 66 30 58 23 60 C 27 55 35 57 36 64" stroke="var(--ink)" stroke-width="12"/>
+      <path d="M46 44 C 28 42 14 48 13 60 C 12 71 22 77 29 71 C 34 66 30 58 23 60 C 27 55 35 57 36 64" stroke="var(--green)" stroke-width="6"/>
+    </g>
+    <g class="leg la"><path d="M90 58 97 76" stroke="var(--ink)" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M90 58 97 76" stroke="var(--green)" stroke-width="5.5" stroke-linecap="round" fill="none"/><circle cx="97" cy="76" r="5" fill="var(--green)" stroke="var(--ink)" stroke-width="3"/></g>
+    <g class="leg lb"><path d="M82 60 84 79" stroke="var(--ink)" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M82 60 84 79" stroke="var(--green)" stroke-width="5.5" stroke-linecap="round" fill="none"/><circle cx="84" cy="79" r="5" fill="var(--green)" stroke="var(--ink)" stroke-width="3"/></g>
+    <g class="leg lc"><path d="M58 58 50 77" stroke="var(--ink)" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M58 58 50 77" stroke="var(--green)" stroke-width="5.5" stroke-linecap="round" fill="none"/><circle cx="50" cy="77" r="5" fill="var(--green)" stroke="var(--ink)" stroke-width="3"/></g>
+    <g class="leg ld"><path d="M66 60 66 80" stroke="var(--ink)" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M66 60 66 80" stroke="var(--green)" stroke-width="5.5" stroke-linecap="round" fill="none"/><circle cx="66" cy="80" r="5" fill="var(--green)" stroke="var(--ink)" stroke-width="3"/></g>
+    <ellipse cx="72" cy="46" rx="27" ry="16" fill="var(--green)" stroke="var(--ink)" stroke-width="4"/>
+    <ellipse cx="107" cy="42" rx="15" ry="12" fill="var(--green)" stroke="var(--ink)" stroke-width="4"/>
+    <circle cx="60" cy="42" r="3" fill="var(--green-d)"/>
+    <circle cx="74" cy="48" r="3.4" fill="var(--green-d)"/>
+    <circle cx="85" cy="43" r="2.4" fill="var(--green-d)"/>
+    <circle cx="112" cy="37" r="3" fill="var(--ink)"/>
+    <circle cx="113" cy="36" r="1" fill="var(--paper)"/>
+    <circle cx="118.5" cy="40" r="1.1" fill="var(--ink)"/>
+    <path d="M121 45 q3 2 5.5 0" stroke="var(--ink)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    ${hat}
+    ${boca}
+  </svg>`;
+}
+document.querySelectorAll("[data-gecko]").forEach(n => n.innerHTML = geckoSVG(false));
+document.querySelectorAll("[data-gecko-don]").forEach(n => n.innerHTML = geckoSVG(true));
+document.getElementById("ano").textContent = new Date().getFullYear();
+
+/* ===== Máquina de piadas ===== */
+const JOKES = [
+  {t:"A Família tem dois ramos: o oficial e o que não existe. Ambos dão lucro. Um deles é justamente o que não existe."},
+  {t:"Proxeneta? Palavra feia. Aqui a gente é “agente de bons encontros”. O registro é outro, mas o carinho é o mesmo."},
+  {t:"A serpente é advogada da Família. Ela nunca perdeu um caso que não tivesse começado pessoalmente."},
+  {t:"O que a Família sabe, a Família jura que não sabe — e jura bem: tem anos de prática e um carimbo."},
+  {t:"Nosso entretenimento é tão leve que já levou três intimações. As intimações queiram subir de peso."},
+  {t:"Cobrança da Família é pontual: você paga, a carteira alivia, todo mundo fica leve — dá até uma paz."},
+  {t:"Seguro de passarela cobre fofoca, inveja e comentário de prima. Não cobre verdade. Verdade é caso pra advogada."},
+  {t:"A Família promove eventos: casamento, batizado e velório de quem falou demais. Os velórios são os mais animados — todo mundo aparece por respeito."},
+  {t:"Devedor da Família não morre. Só fica... difícil de localizar nos finais de semana. E nos úteis também."},
+  {t:"Dom Lagartixo fala baixo por educação. O microfone era da polícia — e o microfone não ouviu nada, o que prova que a gente é quieto."},
+  {t:"A Família não suborna juiz. A Família manda bolo. O juiz gosta de bolo. A coincidência é assada."},
+  {t:"Eva foi a primeira cliente. A maçã era da concorrência, o escândalo foi da imprensa, e a serpente — que era de tudo um pouco — agora é daqui. A Família chama de “recolocação de talento”."},
+  {t:"Esta piada definia o “ramo paralelo” com precisão. A serpente comeu o papel. O resto não existia.", c:1},
+  {t:"O juiz da liminar é primo do Don. A piada não podia. O parentesco, infelizmente, pode.", c:1},
+  {t:"O Ministério Público não achou graça. O Don também não achou o MP — e olhou bem, com binóculo.", c:1},
+  {t:"Se você entendeu qual piada era a verdadeira: parabéns. A Família não entendeu, não tem essa piada, e está indo conferir quem é você."},
+];
+const jokeEl = document.getElementById("joke");
+const jnEl   = document.getElementById("jn");
+const puxar  = document.getElementById("puxar");
+let ji = Math.floor(Math.random() * JOKES.length), cont = 1;
+
+function renderJoke(){
+  const j = JOKES[ji];
+  jokeEl.innerHTML = j.c
+    ? `<span class="cens-chip">Censurada</span><span class="tape">${j.t}</span>`
+    : j.t;
+  jokeEl.style.setProperty("--r", (Math.random()*6-3).toFixed(2) + "deg");
+  jokeEl.classList.remove("slam");
+  void jokeEl.offsetWidth; /* reinicia a animação */
+  jokeEl.classList.add("slam");
+  jnEl.textContent = cont;
+}
+puxar.addEventListener("click", () => {
+  let n;
+  do { n = Math.floor(Math.random() * JOKES.length); } while (n === ji);
+  ji = n; cont++; renderJoke();
+});
+renderJoke();
+
+/* ===== O Don andarilho (progresso de scroll) ===== */
+const walker = document.getElementById("walker");
+const wbadge = document.getElementById("wbadge");
+const wsvg   = walker.querySelector(".wsvg");
+const topbar = document.getElementById("topbar");
+let lastY = window.scrollY, wt;
+
+function onScroll(){
+  const y   = window.scrollY;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const p   = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
+  walker.style.transform = `translateX(${p * (window.innerWidth - walker.offsetWidth)}px)`;
+  if (Math.abs(y - lastY) > 2) wsvg.classList.toggle("flip", y < lastY);
+  wbadge.textContent = p >= .985
+    ? "FIM — A FAMÍLIA NÃO VIU NADA"
+    : `SIGILO RESTANTE: ${Math.round((1 - p) * 100)}%`;
+  walker.classList.add("walking");
+  clearTimeout(wt);
+  wt = setTimeout(() => walker.classList.remove("walking"), 260);
+  topbar.classList.toggle("scrolled", y > 10);
+  lastY = y;
+}
+window.addEventListener("scroll", onScroll, {passive:true});
+onScroll();
+
+/* ===== Revelar ao rolar ===== */
+const io = new IntersectionObserver(
+  es => es.forEach(e => e.isIntersecting && e.target.classList.add("in")),
+  {threshold:.12}
+);
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* ===== Toast do formulário (demonstração, sem backend) ===== */
+const toastEl = document.getElementById("toast");
+let tt;
+function toast(m){
+  toastEl.textContent = m;
+  toastEl.classList.add("show");
+  clearTimeout(tt);
+  tt = setTimeout(() => toastEl.classList.remove("show"), 4500);
+}
+document.getElementById("formContato").addEventListener("submit", e => {
+  e.preventDefault();
+  if (!e.target.checkValidity()) return; /* o navegador reclama baixinho */
+  e.target.reset();
+  toast("Recebido com o maior sigilo. Se ninguém responder em 48h, a Família leu — e decidiu não ter lido. Não pergunte depois.");
+});
+</script>
+</body>
+</html>
